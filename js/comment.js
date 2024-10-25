@@ -5,6 +5,15 @@ export function generateComment() {
     id: getRandomNumber(1, 1000),
     avatar: getRandomAvatar(),
     message: getRandomSentence(),
-    name: getRandomNumber()
+    name: getRandomSentence()
   };
+}
+
+export function generateComments() {
+  const commentsCount = getRandomNumber(0, 30);
+  const comments = [];
+  for (let i = 0; i < commentsCount; i++) {
+    comments.push(generateComment());
+  }
+  return comments;
 }

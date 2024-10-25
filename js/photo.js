@@ -1,5 +1,5 @@
 import { getRandomNumber, getRandomSentence } from './utils.js';
-import { generateComments } from './comments.js';
+import { generateComments } from './comment.js';
 
 export function generatePhotos() {
   const photos = [];
