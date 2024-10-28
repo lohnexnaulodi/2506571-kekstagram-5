@@ -1,6 +1,5 @@
-
 import { generatePhotos } from './photo.js';
-import { renderThumbnails } from '.thumbnail.js';
+import { renderPhotos } from './thumbnail.js';
 
-renderThumbnails(generatePhotos());
-
+const photos = generatePhotos();
+renderPhotos(photos);
