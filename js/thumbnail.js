@@ -1,5 +1,5 @@
 export function renderPhotos(photos) {
-  const picturesContainer = document.querySelector('.pictures');
+  const picturesCont = document.querySelector('.pictures');
   const fragment = document.createDocumentFragment();
   photos.forEach((photo) => {
     const pictureTemplate = document.querySelector('#picture').content;
@@ -10,5 +10,5 @@ export function renderPhotos(photos) {
     pictureElement.querySelector('.picture__comments').textContent = photo.comments.length;
     fragment.appendChild(pictureElement);
   });
-  picturesContainer.appendChild(fragment);
+  picturesCont.appendChild(fragment);
 }
