@@ -1,4 +1,4 @@
-import { getRandomNumber, getRandomSentence, getRandomAvatar } from './utils.js';
+/*import { getRandomNumber, getRandomSentence, getRandomAvatar } from './utils.js';
 
 export function generateComment() {
   return {
@@ -16,4 +16,4 @@ export function generateComments() {
     comments.push(generateComment());
   }
   return comments;
-}
+}*/
