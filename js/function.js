@@ -1,4 +1,4 @@
-function isMeetingWithinWorkingHours(startOfDay, endOfDay, meetingStart, duration) {
+/*function isMeetingWithinWorkingHours(startOfDay, endOfDay, meetingStart, duration) {
   function timeToMinutes(timeStr) {
     const [hours, minutes] = timeStr.split(':').map(Number);
     return hours * 60 + minutes;
@@ -16,4 +16,4 @@ function isMeetingWithinWorkingHours(startOfDay, endOfDay, meetingStart, duratio
 (isMeetingWithinWorkingHours('8:0', '10:0', '8:0', 120));
 (isMeetingWithinWorkingHours('08:00', '14:30', '14:00', 90));
 (isMeetingWithinWorkingHours('14:00', '17:30', '08:0', 90));
-(isMeetingWithinWorkingHours('8:00', '17:30', '08:00', 900));
+(isMeetingWithinWorkingHours('8:00', '17:30', '08:00', 900)); */
