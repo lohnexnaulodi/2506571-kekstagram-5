@@ -1,5 +1,4 @@
-import { generatePhotos } from './photo.js';
-import { renderPhotos } from './thumbnail.js';
+import { generatePhotos } from './data.js';
+import {renderPictures} from './miniatureDrawing.js';
 
-const photos = generatePhotos();
-renderPhotos(photos);
+renderPictures(generatePhotos());
