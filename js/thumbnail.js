@@ -18,10 +18,10 @@ const renderPictures = (pictures) => {
   const fragment = document.createDocumentFragment();
   pictures.forEach((picture) => {
     const pictureElement = createPictureElement(picture);
-    fragment.append(pictureElement);
+    fragment.appendChild(pictureElement);
   });
 
-  picturesBox.append(fragment);
+  picturesBox.appendChild(fragment);
 };
 
 export { renderPictures };
