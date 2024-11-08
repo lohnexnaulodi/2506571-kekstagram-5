@@ -1,5 +1,1 @@
-
-import { generatePhotos } from './photo.js';
-
-generatePhotos();
-
+import './thumbnail.js';
