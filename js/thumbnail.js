@@ -1,7 +1,3 @@
-
-import './1123.js';
-
-
 import { generatePhotos } from './photo.js';
 
 const picturesBox = document.querySelector('.pictures');
