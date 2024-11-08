@@ -1,27 +1,23 @@
-const pictureTemplate = document
-  .querySelector('#picture')
-  .content.querySelector('.picture');
-const picturesBox = document.querySelector('.pictures');
-const createPictureElement = ({ comments, description, likes, url }) => {
-  const pictureElement = pictureTemplate.cloneNode(true);
 
+import './1123.js';
+
+
+import { generatePhotos } from './photo.js';
+
+const picturesBox = document.querySelector('.pictures');
+const pictureTemplate = document.querySelector('#picture')
+  .content
+  .querySelector('.picture');
+const generatedPhotos = generatePhotos();
+const fragment = document.createDocumentFragment();
+
+generatedPhotos.forEach((photo) => {
+  const { url, description, likes, comments } = photo;
+  const pictureElement = pictureTemplate.cloneNode(true);
   pictureElement.querySelector('.picture__img').src = url;
   pictureElement.querySelector('.picture__img').alt = description;
-  pictureElement.querySelector('.pictur__comments').textContent = comments.length;
+  pictureElement.querySelector('.picture__comments').textContent = comments.length;
   pictureElement.querySelector('.picture__likes').textContent = likes;
-
-  return pictureElement;
-};
-
-
-const renderPictures = (pictures) => {
-  const fragment = document.createDocumentFragment();
-  pictures.forEach((picture) => {
-    const pictureElement = createPictureElement(picture);
-    fragment.appendChild(pictureElement);
-  });
-
-  picturesBox.appendChild(fragment);
-};
-
-export { renderPictures };
+  fragment.appendChild(pictureElement);
+});
+picturesBox.appendChild(fragment);
