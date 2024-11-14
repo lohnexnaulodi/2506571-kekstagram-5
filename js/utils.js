@@ -1,19 +1,18 @@
-export function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+export const getRandomInt = (a, b) => {
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+};
 
-export function getRandomSentence() {
-  const sentences = [
-    'Всё отлично!',
-    'В целом всё неплохо. Но не всё.',
-    'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-    'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-    'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-    'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
-  ];
-  return sentences[getRandomNumber(0, sentences.length - 1)];
-}
+export const getRandomArrayElement = (array) =>
+  array[getRandomInt(0, array.length - 1)];
 
-export function getRandomAvatar() {
-  return `img/avatar-${getRandomNumber(1, 6)}.svg`;
-}
+export const createIdGenerator = () => {
+  let lastGeneratedId = 0;
+
+  return () => {
+    lastGeneratedId += 1;
+    return lastGeneratedId;
+  };
+};
