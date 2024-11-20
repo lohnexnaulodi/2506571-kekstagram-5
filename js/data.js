@@ -1,10 +1,10 @@
 import { getRandomInt, getRandomArrayElement, createIdGenerator } from './util.js';
 
-const PICTURE_COUNT = 25;
+const PIC_COUNT = 25;
 const LIKE_MIN_COUNT = 15;
 const LIKE_MAX_COUNT = 200;
-const COMMENT_COUNT = 30;
-const COMMENT_MESSAGES = [
+const COMM_COUNT = 30;
+const COMM_MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -22,7 +22,7 @@ const COMMENT_MESSAGES = [
   'Вы так талантливы! С нетерпением жду новых постов.'
 ];
 
-const DESCRIPTIONS = [
+const DESCRIP = [
   'Летний чил на югаx. #тай #отдых #лето #чил #travel #travelgram #summergram #chill',
   'Тестим новую камеру! #camera #test #new #newcameratest #pic #photo #instaphoto',
   'Затусили друзьями на море #laptevsea #north #northeastpassage',
@@ -38,7 +38,7 @@ const generateCommentId = createIdGenerator();
 
 const createMessage = () => Array.from(
   { length: getRandomInt(1, 2) },
-  () => getRandomArrayElement(COMMENT_MESSAGES),
+  () => getRandomArrayElement(COMM_MESSAGES),
 ). join(' ');
 
 const createComment = () => ({
@@ -51,16 +51,16 @@ const createComment = () => ({
 const createPicture = (index) => ({
   id: index,
   url: `photos/${index}.jpg`,
-  description: getRandomArrayElement(DESCRIPTIONS),
+  description: getRandomArrayElement(DESCRIP),
   likes: getRandomInt(LIKE_MIN_COUNT, LIKE_MAX_COUNT),
   comments: Array. from(
-    { length: getRandomInt(0, COMMENT_COUNT) },
+    { length: getRandomInt(0, COMM_COUNT) },
     createComment,
   )
 });
 
 const generatePhotos = () => Array.from(
-  { length: PICTURE_COUNT },
+  { length: PIC_COUNT },
   (_, pictureIndex) => createPicture(pictureIndex + 1),
 );
 
