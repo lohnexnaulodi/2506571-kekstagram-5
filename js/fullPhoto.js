@@ -11,10 +11,10 @@ const renderGallery = (pictures) => {
     }
 
     evt.preventDefault();
-    const picture = pictures.find(
+    const pic = pictures.find(
       (item) => item.id === +thumbnail.dataset.pictureId
     );
-    showBigPicture(picture);
+    showBigPicture(pic);
   });
 
   renderPictures(pictures, container);
