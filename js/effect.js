@@ -1,116 +1,120 @@
-const Effect = {
-  DEFAULT: 'none',
-  CHROME: 'chrome',
-  SEPIA: 'sepia',
-  MARVIN: 'marvin',
-  PHOBOS: 'phobos',
-  HEAT: 'heat'
-};
 const effectToFilter = {
-  [Effect.CHROME]: {
+  chrome: {
     style: 'grayscale',
     unit: ''
   },
-  [Effect.SEPIA]: {
+  sepia: {
     style: 'sepia',
     unit: ''
   },
-  [Effect.MARVIN]: {
+  marvin: {
     style: 'invert',
     unit: '%'
   },
-  [Effect.PHOBOS]: {
+  phobos: {
     style: 'blur',
     unit: 'px'
   },
-  [Effect.HEAT]: {
+  heat: {
     style: 'brightness',
     unit: ''
   }
 };
+
 const effectToSliderOptions = {
-  [Effect.DEFAULT]: {
+  none: {
     min: 0,
     max: 100,
     step: 1
   },
-  [Effect.CHROME]: {
+  chrome: {
     min: 0,
     max: 1,
     step: 0.1
   },
-  [Effect.SEPIA]: {
+  sepia: {
     min: 0,
     max: 1,
     step: 0.1
   },
-  [Effect.MARVIN]: {
+  marvin: {
     min: 0,
     max: 100,
     step: 1
   },
-  [Effect.PHOBOS]: {
+  phobos: {
     min: 0,
     max: 3,
     step: 0.1
   },
-  [Effect.HEAT]: {
+  heat: {
     min: 1,
     max: 3,
     step: 0.1
   }
 };
+
 const modalElement = document.querySelector('.img-upload');
 const imageElement = modalElement.querySelector('.img-upload__preview img');
 const sliderElement = modalElement.querySelector('.effect-level__slider');
 const sliderContainerElement = modalElement.querySelector('.img-upload__effect-level');
 const effectLevelElement = modalElement.querySelector('.effect-level__value');
-let chosenEffect = Effect.DEFAULT;
+let chosenEffect = 'none';
+
 const setImageStyle = () => {
-  if (chosenEffect === Effect.DEFAULT) {
+  if (chosenEffect === 'none') {
     imageElement.style.filter = null;
     return;
   }
-  const {value} = effectLevelElement;
-  const {style, unit} = effectToFilter[chosenEffect];
+  const { value } = effectLevelElement;
+  const { style, unit } = effectToFilter[chosenEffect];
   imageElement.style.filter = `${style}(${value}${unit})`;
 };
+
 const onSliderUpdate = () => {
   effectLevelElement.value = sliderElement.noUiSlider.get();
   setImageStyle();
 };
-const createSlider = ({min, max, step}) => {
+
+const createSlider = ({ min, max, step }) => {
   noUiSlider.create(sliderElement, {
-    range: {min, max},
+    range: { min, max },
     step,
     start: max,
     connect: 'lower'
   });
   sliderElement.noUiSlider.on('update', onSliderUpdate);
 };
+
 const setSlider = () => {
   if (sliderElement.noUiSlider) {
     sliderElement.noUiSlider.destroy();
   }
   setImageStyle();
   sliderContainerElement.classList.add('hidden');
-  if (chosenEffect !== Effect.DEFAULT) {
+  if (chosenEffect !== 'none') {
     createSlider(effectToSliderOptions[chosenEffect]);
     sliderContainerElement.classList.remove('hidden');
   }
 };
+
 const setEffect = (effect) => {
   chosenEffect = effect;
   setSlider();
 };
+
 const reset = () => {
-  setEffect(Effect.DEFAULT);
+  chosenEffect = 'none';
+  setSlider();
 };
+
 const onEffectsChange = (evt) => {
   setEffect(evt.target.value);
 };
+
 const init = () => {
   setSlider();
   modalElement.querySelector('.effects').addEventListener('change', onEffectsChange);
 };
+
 export { init, reset };
