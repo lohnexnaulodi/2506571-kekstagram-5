@@ -95,4 +95,5 @@ const setOnFormSubmit = (callback) => {
     }
   });
 };
+
 export{ hideModal, setOnFormSubmit };

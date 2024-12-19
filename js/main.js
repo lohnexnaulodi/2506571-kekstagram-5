@@ -2,14 +2,16 @@ import { renderGallery } from './fullPhoto.js';
 import { showSuccessMessage, showErrorMessage } from './message.js';
 import { hideModal, setOnFormSubmit } from './form.js';
 import { getData, sendData } from './fetch.js';
-import { showAlert } from './util.js';
-import './form.js';
+import { showAlert, debounce } from './util.js';
+import { init, getFilterPictures } from './filter.js';
 
 try {
-  renderGallery(await getData());
+  init(await getData(), debounce(renderGallery));
+  renderGallery(getFilterPictures());
 } catch (err) {
   showAlert(err.message);
 }
+
 setOnFormSubmit(async (data) => {
   try {
     await sendData(data);
@@ -19,4 +21,3 @@ setOnFormSubmit(async (data) => {
     showErrorMessage();
   }
 });
-
