@@ -4,7 +4,6 @@ const Route = {
   GET_DATA:'/data',
   SEND_DATA: '/',
 };
-
 const Method = {
   GET: 'GET',
   POST: 'POST',
@@ -28,7 +27,5 @@ const load = (route, errorText, method = Method.GET, body = null) =>
     });
 
 const getData = () => load(Route.GET_DATA, ErrorText.GET_DATA);
-
 const sendData = (body) => load(Route.SEND_DATA, ErrorText.SEND_DATA, Method.POST, body);
-
 export{getData, sendData};

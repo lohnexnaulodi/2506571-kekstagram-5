@@ -1,5 +1,4 @@
 import {isEscapeKey} from './util.js';
-
 const COMMENTS_STEP = 5;
 
 const bigPictureElement = document.querySelector('.big-picture');

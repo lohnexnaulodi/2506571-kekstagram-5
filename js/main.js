@@ -11,7 +11,6 @@ try {
 } catch (err) {
   showAlert(err.message);
 }
-
 setOnFormSubmit(async (data) => {
   try {
     await sendData(data);

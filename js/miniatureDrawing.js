@@ -4,7 +4,7 @@ const showPicturesTemplate = document.querySelector('#picture')
 
 const container = document.querySelector('.pictures');
 
-const createPictures = ({url, description, likes, comments, id}) => {
+const createPicturesElement = ({url, description, likes, comments, id}) => {
   const showPictures = showPicturesTemplate.cloneNode(true);
   showPictures.querySelector('.picture__img').src = url;
   showPictures.querySelector('.picture__img').alt = description;
@@ -14,14 +14,14 @@ const createPictures = ({url, description, likes, comments, id}) => {
   return showPictures;
 };
 
-const renderMiniPictures = (pictures) => {
+const renderPictures = (pictures) => {
   container.querySelectorAll('.picture').forEach((element) => element.remove());
   const similarListFragment = document.createDocumentFragment();
   pictures.forEach((picture) => {
-    similarListFragment.append(createPictures(picture));
+    similarListFragment.append(createPicturesElement(picture));
   });
 
   container.append(similarListFragment);
 };
 
-export { renderMiniPictures };
+export { renderPictures };
