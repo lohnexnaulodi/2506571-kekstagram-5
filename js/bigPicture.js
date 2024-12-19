@@ -95,3 +95,5 @@ const showBigPicture = (data) => {
 canselButtonElement.addEventListener('click', onCanselbuttonClick);
 
 export { showBigPicture };
+/*
+*/
